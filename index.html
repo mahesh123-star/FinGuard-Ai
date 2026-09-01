@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinGuard AI - Financial Security & Document Authentication</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==================== LANDING PAGE VIEW ==================== -->
+  <div id="landing-page-view">
+    
+    <!-- Landing Navigation -->
+    <nav class="navbar navbar-expand-lg landing-nav">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <i class="fa-solid fa-shield-halved text-primary fs-3 me-2"></i>
+          <span class="fw-bold fs-4 text-primary">FinGuard <span class="text-primary">AI</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#landingNavbar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="landingNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link text-dark fw-medium px-3" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-dark fw-medium px-3" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link text-dark fw-medium px-3" href="#technology">Technology</a></li>
+            <li class="nav-item"><a class="nav-link text-dark fw-medium px-3" href="#models">Model Specs</a></li>
+            <li class="nav-item"><a class="nav-link text-dark fw-medium px-3" href="#about">About</a></li>
+          </ul>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+            <button class="btn btn-primary" onclick="showDashboardView('overview')">Get Started</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="neural-shape shape-1"></div>
+      <div class="neural-shape shape-2"></div>
+      <div class="container text-center text-lg-start">
+        <div class="row align-items-center min-vh-75 pt-5">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill mb-3">
+              <i class="fa-solid fa-bolt me-1"></i> Neural Network Powered
+            </span>
+            <h1 class="display-3 fw-extrabold mb-3">
+              <span class="gradient-text">FinGuard AI</span>
+            </h1>
+            <h2 class="h3 text-muted mb-4">
+              An Intelligent Financial Security and Document Authentication Platform
+            </h2>
+            <p class="lead text-secondary mb-5 fw-medium">
+              Securing Financial Trust Through Intelligent Vision.
+            </p>
+            <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+              <button class="btn btn-primary btn-lg" onclick="showDashboardView('overview')">
+                <i class="fa-solid fa-chart-line me-2"></i>Launch Console
+              </button>
+              <a href="#features" class="btn btn-outline-primary btn-lg">
+                <i class="fa-solid fa-circle-info me-2"></i>Learn More
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center">
+            <div class="hero-shield-wrapper">
+              <div class="shield-glow"></div>
+              <i class="fa-solid fa-shield-halved text-secondary" style="font-size: 14rem; filter: drop-shadow(0 15px 30px rgba(37,99,235,0.2));"></i>
+              <div class="position-absolute top-50 start-50 translate-middle">
+                <i class="fa-solid fa-lock text-white" style="font-size: 4rem;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 border-top border-bottom" style="border-color: var(--glass-border) !important;">
+      <div class="container py-4">
+        <div class="text-center max-w-600 mx-auto mb-5">
+          <h2 class="display-5 fw-bold">Platform Capabilities</h2>
+          <p class="text-muted">A unified deep-learning security system built to verify, authenticate, and guard financial transactions and physical instruments.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card premium-card p-4 h-100">
+              <div class="card-icon icon-blue"><i class="fa-solid fa-brain"></i></div>
+              <h3 class="h5 mb-3">AI-Powered Verification</h3>
+              <p class="text-muted mb-0">Employs advanced multi-layer custom CNN architectures trained to extract fine-grain features from document scans, signatures, and notes.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card premium-card p-4 h-100">
+              <div class="card-icon icon-green"><i class="fa-solid fa-gauge-high"></i></div>
+              <h3 class="h5 mb-3">Near Real-Time Detection</h3>
+              <p class="text-muted mb-0">High-speed inference pipelines complete analysis in milliseconds, facilitating immediate verification at cash counters or digital portals.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card premium-card p-4 h-100">
+              <div class="card-icon icon-red"><i class="fa-solid fa-shield-check"></i></div>
+              <h3 class="h5 mb-3">Deep Learning Models</h3>
+              <p class="text-muted mb-0">Utilizes state-of-the-art architectures including transfer-learned EfficientNet networks optimized for texture and anomaly detection.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="card premium-card p-4 h-100">
+              <div class="card-icon icon-blue"><i class="fa-solid fa-fingerprint"></i></div>
+              <h3 class="h5 mb-3">Secure Financial Authentication</h3>
+              <p class="text-muted mb-0">Guards bank cheques, payment codes, and credentials against physical fraud, forgery, tampering, and counterfeiting.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="card premium-card p-4 h-100">
+              <div class="card-icon icon-green"><i class="fa-solid fa-network-wired"></i></div>
+              <h3 class="h5 mb-3">Unified Financial Security Platform</h3>
+              <p class="text-muted mb-0">Bridges physical currency verification, cheque processing, signature authenticity, and document inspection under a single management console.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="py-5">
+      <div class="container text-center py-4">
+        <h2 class="display-6 fw-bold mb-4">Core Technology Stack</h2>
+        <p class="text-muted mb-5">Built using industry-standard engineering frameworks for neural network computation, computer vision, and dashboard delivery.</p>
+        <div class="d-flex flex-wrap justify-content-center px-lg-5">
+          <span class="tech-badge"><i class="fa-brands fa-python text-primary"></i>Python</span>
+          <span class="tech-badge"><i class="fa-solid fa-flask text-danger"></i>Flask</span>
+          <span class="tech-badge"><i class="fa-solid fa-circle-nodes text-warning"></i>TensorFlow</span>
+          <span class="tech-badge"><i class="fa-solid fa-microchip text-danger"></i>Keras</span>
+          <span class="tech-badge"><i class="fa-solid fa-eye text-success"></i>OpenCV</span>
+          <span class="tech-badge"><i class="fa-solid fa-database text-info"></i>SQLite</span>
+          <span class="tech-badge"><i class="fa-brands fa-html5 text-danger"></i>HTML5</span>
+          <span class="tech-badge"><i class="fa-brands fa-css3-alt text-primary"></i>CSS3</span>
+          <span class="tech-badge"><i class="fa-brands fa-bootstrap text-purple" style="color: #563d7c;"></i>Bootstrap 5</span>
+          <span class="tech-badge"><i class="fa-brands fa-square-js text-warning"></i>JavaScript</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Model Comparison Section -->
+    <section id="models" class="py-5 border-top" style="border-color: var(--glass-border) !important;">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <h2 class="display-6 fw-bold">Deep Learning Models Evaluation</h2>
+          <p class="text-muted">Comparing our custom Convolutional Neural Network with Transfer Learning architectures</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+          <!-- Custom CNN Card -->
+          <div class="col-md-5">
+            <div class="card premium-card model-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="h4 mb-0">Custom CNN</h3>
+                <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-3 py-1 rounded-pill">Targeted Design</span>
+              </div>
+              <p class="text-muted small">A lightweight, custom multi-layer CNN optimized specifically for local document artifacting and high-frequency noise analysis.</p>
+              <hr class="my-3">
+              <div class="row g-3">
+                <div class="col-6"><span class="text-muted d-block small">Accuracy</span><strong>96.42%</strong></div>
+                <div class="col-6"><span class="text-muted d-block small">Precision</span><strong>95.89%</strong></div>
+                <div class="col-6"><span class="text-muted d-block small">Recall</span><strong>96.10%</strong></div>
+                <div class="col-6"><span class="text-muted d-block small">F1-Score</span><strong>95.99%</strong></div>
+                <div class="col-12"><span class="text-muted d-block small">Avg. Inference Time</span><strong>18ms / sample (CPU)</strong></div>
+              </div>
+            </div>
+          </div>
+          <!-- EfficientNet-B0 Card -->
+          <div class="col-md-5">
+            <div class="card premium-card model-card efficientnet h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="h4 mb-0">EfficientNet-B0</h3>
+                <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 rounded-pill">Transfer Learning</span>
+              </div>
+              <p class="text-muted small">Pre-trained on ImageNet and fine-tuned on custom currency and signature features for robust, invariant feature representation.</p>
+              <hr class="my-3">
+              <div class="row g-3">
+                <div class="col-6"><span class="text-muted d-block small">Accuracy</span><strong>98.71%</strong></div>
+                <div class="col-6"><span class="text-muted d-block small">Precision</span><strong>98.54%</strong></div>
+                <div class="col-6"><span class="text-muted d-block small">Recall</span><strong>98.60%</strong></div>
+                <div class="col-6"><span class="text-muted d-block small">F1-Score</span><strong>98.57%</strong></div>
+                <div class="col-12"><span class="text-muted d-block small">Avg. Inference Time</span><strong>45ms / sample (CPU)</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark text-white border-top border-secondary">
+      <div class="container text-center">
+        <h4 class="h5 fw-bold mb-3">FinGuard AI</h4>
+        <p class="text-muted mb-4">Final Year Neural Networks and Deep Learning Case Study</p>
+        <div class="d-flex justify-content-center gap-4 mb-4">
+          <span class="text-muted"><i class="fa-solid fa-code me-2"></i>Developer: Engineering Team</span>
+          <span class="text-muted"><i class="fa-brands fa-github me-2"></i><a href="#" class="text-muted text-decoration-none">GitHub Repository</a></span>
+        </div>
+        <p class="text-muted small mb-0">&copy; 2026 FinGuard AI. All rights reserved. Built for academic assessment.</p>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- ==================== DASHBOARD VIEW ==================== -->
+  <div id="dashboard-view" style="display: none;">
+    <div id="dashboard-container">
+      
+      <!-- Left Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-shield-halved text-info fs-4 me-2"></i>
+          <span class="fw-bold fs-5 text-white">FinGuard <span class="text-info">AI</span></span>
+        </div>
+        <div class="sidebar-menu">
+          <span class="menu-label">Console</span>
+          <a href="#" class="sidebar-link active" onclick="switchDashboardPanel('overview', this)">
+            <i class="fa-solid fa-house"></i> Overview
+          </a>
+          
+          <span class="menu-label mt-4">AI Verification Modules</span>
+          <a href="#" class="sidebar-link" onclick="switchDashboardPanel('currency', this)">
+            <i class="fa-solid fa-money-bill-wave"></i> Currency Notes
+          </a>
+          <a href="#" class="sidebar-link" onclick="switchDashboardPanel('cheque', this)">
+            <i class="fa-solid fa-money-check-dollar"></i> Bank Cheques
+          </a>
+          <a href="#" class="sidebar-link" onclick="switchDashboardPanel('signature', this)">
+            <i class="fa-solid fa-signature"></i> Signature Matching
+          </a>
+          <a href="#" class="sidebar-link" onclick="switchDashboardPanel('document', this)">
+            <i class="fa-solid fa-file-invoice-dollar"></i> Doc Authentication
+          </a>
+          <a href="#" class="sidebar-link" onclick="switchDashboardPanel('qr', this)">
+            <i class="fa-solid fa-qrcode"></i> QR Transactions
+          </a>
+          
+          <span class="menu-label mt-4">Security Administration</span>
+          <a href="#" class="sidebar-link" onclick="switchDashboardPanel('history', this)">
+            <i class="fa-solid fa-clock-rotate-left"></i> Verify History
+          </a>
+          <a href="#" class="sidebar-link" onclick="switchDashboardPanel('settings', this)">
+            <i class="fa-solid fa-sliders"></i> Platform Settings
+          </a>
+        </div>
+        <div class="sidebar-footer">
+          <div>v1.0.0 Stable</div>
+          <div>Neural Networks Case Study</div>
+        </div>
+      </aside>
+
+      <!-- Main Contents Area -->
+      <main class="main-content">
+        
+        <!-- Header -->
+        <header class="dashboard-header">
+          <div class="d-flex align-items-center">
+            <button class="menu-toggle-btn me-3" onclick="toggleMobileSidebar()">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <h4 class="h5 mb-0 fw-semibold text-primary" id="panel-title-label">Dashboard Overview</h4>
+          </div>
+          <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-light btn-sm text-secondary border d-none d-sm-inline-flex align-items-center gap-2" onclick="showLandingView()">
+              <i class="fa-solid fa-arrow-left"></i> Landing Page
+            </button>
+            
+            <!-- Notifications Dropdown -->
+            <div class="dropdown">
+              <button class="btn btn-light rounded-circle position-relative p-2 border" type="button" data-bs-toggle="dropdown">
+                <i class="fa-solid fa-bell"></i>
+                <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-white rounded-circle"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2 p-2" style="width: 300px;">
+                <li><h6 class="dropdown-header text-primary fw-bold">Recent Alerts</h6></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item rounded p-2" href="#">
+                    <div class="d-flex justify-content-between mb-1">
+                      <strong class="text-danger small">Fraud Flagged</strong>
+                      <span class="text-muted small" style="font-size: 0.7rem;">5m ago</span>
+                    </div>
+                    <p class="mb-0 text-muted small text-wrap">Counterfeit USD note detected by Neural Engine.</p>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item rounded p-2 mt-1" href="#">
+                    <div class="d-flex justify-content-between mb-1">
+                      <strong class="text-success small">Model Loaded</strong>
+                      <span class="text-muted small" style="font-size: 0.7rem;">1h ago</span>
+                    </div>
+                    <p class="mb-0 text-muted small text-wrap">EfficientNet-B0 has completed initialization.</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Profile Dropdown -->
+            <div class="dropdown">
+              <button class="btn btn-light d-flex align-items-center gap-2 border px-3 py-2 rounded-pill" type="button" data-bs-toggle="dropdown">
+                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 28px; height: 28px; font-size: 0.8rem;">A</div>
+                <span class="fw-medium text-dark d-none d-md-inline" style="font-size: 0.85rem;">Admin</span>
+                <i class="fa-solid fa-angle-down text-muted" style="font-size: 0.75rem;"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                <li><a class="dropdown-item" href="#" onclick="switchDashboardPanel('settings')"><i class="fa-solid fa-user-gear me-2 text-muted"></i>Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="#" onclick="showLandingView()"><i class="fa-solid fa-right-from-bracket me-2"></i>Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- Dynamic Workspaces -->
+        <div class="dashboard-workspace">
+
+          <!-- 1. OVERVIEW PANEL -->
+          <div id="panel-overview" class="dashboard-workspace-panel active-panel">
+            <div class="row g-4 mb-4">
+              <!-- Total Verifications Card -->
+              <div class="col-sm-6 col-xl-3">
+                <div class="card premium-card p-4 border-0">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted fw-semibold small uppercase">Total Scans</span>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle"><i class="fa-solid fa-calculator me-1"></i> Live</span>
+                  </div>
+                  <h3 class="display-6 fw-bold mb-1" id="stat-total-scans">1,248</h3>
+                  <div class="text-success small fw-medium">
+                    <i class="fa-solid fa-arrow-up me-1"></i>+12.4% <span class="text-muted">this week</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Genuine Assets Card -->
+              <div class="col-sm-6 col-xl-3">
+                <div class="card premium-card p-4 border-0">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted fw-semibold small uppercase">Genuine Assets</span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle"><i class="fa-solid fa-shield-check me-1"></i> Secured</span>
+                  </div>
+                  <h3 class="display-6 fw-bold mb-1" id="stat-genuine-assets">1,189</h3>
+                  <div class="text-muted small">
+                    95.27% rate of safety
+                  </div>
+                </div>
+              </div>
+              <!-- Fraud Detected Card -->
+              <div class="col-sm-6 col-xl-3">
+                <div class="card premium-card p-4 border-0">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted fw-semibold small uppercase">Fraud Detected</span>
+                    <span class="badge bg-danger-subtle text-danger border border-danger-subtle"><i class="fa-solid fa-triangle-exclamation me-1"></i> Flags</span>
+                  </div>
+                  <h3 class="display-6 fw-bold mb-1 text-danger" id="stat-fraud-detected">59</h3>
+                  <div class="text-danger small fw-medium">
+                    <i class="fa-solid fa-shield-virus me-1"></i>Action required immediately
+                  </div>
+                </div>
+              </div>
+              <!-- Accuracy Metric Card -->
+              <div class="col-sm-6 col-xl-3">
+                <div class="card premium-card p-4 border-0">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted fw-semibold small uppercase">System Accuracy</span>
+                    <span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i class="fa-solid fa-microchip me-1"></i> Core</span>
+                  </div>
+                  <h3 class="display-6 fw-bold mb-1" id="stat-system-accuracy">98.71%</h3>
+                  <div class="text-muted small" id="stat-selected-model">
+                    EfficientNet-B0 Loaded
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Charts and Statistics Plots -->
+            <div class="row g-4 mb-4">
+              <div class="col-lg-8">
+                <div class="card premium-card p-4 border-0 h-100">
+                  <h5 class="card-title fw-bold text-primary mb-4">Weekly Verification Trends</h5>
+                  <div style="position: relative; height: 300px;">
+                    <canvas id="trendChart"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card premium-card p-4 border-0 h-100">
+                  <h5 class="card-title fw-bold text-primary mb-4">Verification Breakdown</h5>
+                  <div style="position: relative; height: 300px;" class="d-flex align-items-center justify-content-center">
+                    <canvas id="breakdownChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity Table -->
+            <div class="card premium-card border-0 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="card-title fw-bold text-primary mb-0">Recent Verification Activity</h5>
+                <button class="btn btn-outline-primary btn-sm" onclick="switchDashboardPanel('history', document.querySelector('[onclick*=\'history\']'))">
+                  View Full History
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover history-table mb-0">
+                  <thead>
+                    <tr>
+                      <th>Timestamp</th>
+                      <th>Verification Module</th>
+                      <th>Sample Thumbnail</th>
+                      <th>Prediction Results</th>
+                      <th>Confidence Score</th>
+                      <th>Safety Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overview-recent-table-body">
+                    <!-- Dynamic Rows added via app.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. MODULE: COUNTERFEIT CURRENCY DETECTION -->
+          <div id="panel-currency" class="dashboard-workspace-panel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card premium-card p-4 border-0">
+                  <h5 class="fw-bold mb-3">Upload Currency Specimen</h5>
+                  <p class="text-muted small">Verify banknotes for counterfeits by uploading high-definition scans of the front bill surface.</p>
+                  
+                  <div class="upload-dropzone" id="dropzone-currency" onclick="triggerFileInput('input-currency')">
+                    <input type="file" id="input-currency" class="d-none" accept="image/*" onchange="handleFileSelection(this, 'currency')">
+                    <div class="upload-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                    <h6 class="fw-semibold">Drag and drop banknote image here</h6>
+                    <p class="text-muted small mb-0">Supports JPG, PNG (Max 10MB)</p>
+                    <button class="btn btn-outline-primary btn-sm mt-3">Browse File</button>
+                    
+                    <div class="preview-container" id="preview-container-currency">
+                      <img src="" id="preview-img-currency" class="preview-image" alt="Banknote Preview">
+                      <div class="scanner-scanbar"></div>
+                      <div class="scanning-overlay">
+                        <div class="scan-spinner"></div>
+                        <h6 class="fw-bold text-white mb-1">Scanning Security Indicators...</h6>
+                        <span class="text-white-50 small">Running CNN Feature Extraction</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-3 mt-4">
+                    <button class="btn btn-primary flex-grow-1" id="btn-verify-currency" disabled onclick="runVerification('currency')">
+                      <i class="fa-solid fa-shield-halved me-2"></i>Verify Authenticity
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="resetVerification('currency')">Reset</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Results Panel -->
+              <div class="col-lg-5">
+                <div id="result-currency" class="card premium-card p-4 border-0 result-card h-100">
+                  <h5 class="fw-bold text-primary mb-4"><i class="fa-solid fa-square-poll-vertical me-2"></i>Analysis Results</h5>
+                  <div class="text-center py-4 mb-4 rounded-4 bg-light">
+                    <div id="result-status-badge-currency" class="mb-3">
+                      <!-- Status Badge Dynamic -->
+                    </div>
+                    <h2 class="fw-bold text-white mb-1" id="result-prediction-currency">Genuine USD</h2>
+                    <span class="text-muted small">Neural Network Classification Result</span>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="text-muted small">Model Confidence Score</span>
+                      <strong class="text-primary small" id="result-confidence-currency">99.2%</strong>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-confidence" id="result-progress-currency" role="progressbar" style="width: 99.2%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="card bg-light border-0 p-3 mb-4 rounded-3">
+                    <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-circle-nodes me-2"></i>Network Features Checked</h6>
+                    <ul class="list-unstyled small mb-0 text-muted">
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Watermark Texture Analysis</li>
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Microprinting Sharpness Ratio</li>
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Security Thread Color Dispersion</li>
+                      <li><i class="fa-solid fa-circle-check text-success me-2"></i>Infrared / Ultraviolet Pattern Match</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. MODULE: BANK CHEQUE VERIFICATION -->
+          <div id="panel-cheque" class="dashboard-workspace-panel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card premium-card p-4 border-0">
+                  <h5 class="fw-bold mb-3">Upload Bank Cheque</h5>
+                  <p class="text-muted small">Upload scans of financial cheques to verify magnetic ink fields (MICR), details, and detect layout anomalies.</p>
+                  
+                  <div class="upload-dropzone" id="dropzone-cheque" onclick="triggerFileInput('input-cheque')">
+                    <input type="file" id="input-cheque" class="d-none" accept="image/*" onchange="handleFileSelection(this, 'cheque')">
+                    <div class="upload-icon"><i class="fa-solid fa-money-check-dollar"></i></div>
+                    <h6 class="fw-semibold">Drag and drop cheque image here</h6>
+                    <p class="text-muted small mb-0">Supports JPG, PNG (Max 10MB)</p>
+                    <button class="btn btn-outline-primary btn-sm mt-3">Browse File</button>
+                    
+                    <div class="preview-container" id="preview-container-cheque">
+                      <img src="" id="preview-img-cheque" class="preview-image" alt="Cheque Preview">
+                      <div class="scanner-scanbar"></div>
+                      <div class="scanning-overlay">
+                        <div class="scan-spinner"></div>
+                        <h6 class="fw-bold text-white mb-1">Analyzing Cheque Fields...</h6>
+                        <span class="text-white-50 small">Evaluating MICR line & Layout Structure</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-3 mt-4">
+                    <button class="btn btn-primary flex-grow-1" id="btn-verify-cheque" disabled onclick="runVerification('cheque')">
+                      <i class="fa-solid fa-shield-halved me-2"></i>Verify Instrument
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="resetVerification('cheque')">Reset</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Results Panel -->
+              <div class="col-lg-5">
+                <div id="result-cheque" class="card premium-card p-4 border-0 result-card h-100">
+                  <h5 class="fw-bold text-primary mb-4"><i class="fa-solid fa-square-poll-vertical me-2"></i>Analysis Results</h5>
+                  <div class="text-center py-4 mb-4 rounded-4 bg-light">
+                    <div id="result-status-badge-cheque" class="mb-3">
+                      <!-- Status Badge Dynamic -->
+                    </div>
+                    <h2 class="fw-bold text-white mb-1" id="result-prediction-cheque">Genuine Instrument</h2>
+                    <span class="text-muted small">Neural Network Classification Result</span>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="text-muted small">Model Confidence Score</span>
+                      <strong class="text-primary small" id="result-confidence-cheque">97.8%</strong>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-confidence" id="result-progress-cheque" role="progressbar" style="width: 97.8%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="card bg-light border-0 p-3 mb-4 rounded-3">
+                    <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-circle-nodes me-2"></i>Instrument Metrics</h6>
+                    <ul class="list-unstyled small mb-0 text-muted">
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>MICR E-13B Codeline Recognition</li>
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Cheque Layout Integrity</li>
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Amount Legal vs. Courtesy match</li>
+                      <li><i class="fa-solid fa-circle-check text-success me-2"></i>Date Modification Analysis</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. MODULE: SIGNATURE MATCHING -->
+          <div id="panel-signature" class="dashboard-workspace-panel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card premium-card p-4 border-0">
+                  <h5 class="fw-bold mb-3">Signature Verification (Siamese Networks)</h5>
+                  <p class="text-muted small">Perform dynamic signature matching using contrastive feature learning. Upload a reference template signature and the query specimen to compare similarities.</p>
+                  
+                  <div class="row g-3">
+                    <!-- Reference Signature Upload -->
+                    <div class="col-md-6">
+                      <div class="card border border-2 border-dashed p-3 text-center bg-light" style="cursor: pointer;" id="dropzone-sig-ref" onclick="triggerFileInput('input-sig-ref')">
+                        <input type="file" id="input-sig-ref" class="d-none" accept="image/*" onchange="handleDualFileSelection(this, 'sig-ref')">
+                        <div class="mb-2"><i class="fa-solid fa-file-signature text-secondary fs-3"></i></div>
+                        <h6 class="small fw-semibold mb-1">1. Reference Signature</h6>
+                        <span class="text-muted small" style="font-size: 0.75rem;">Upload Template</span>
+                        
+                        <div class="mt-2 text-center" id="preview-container-sig-ref" style="display: none; height: 120px;">
+                          <img src="" id="preview-img-sig-ref" class="img-fluid h-100 rounded" style="object-fit: contain; background: #FFF;">
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Query Signature Upload -->
+                    <div class="col-md-6">
+                      <div class="card border border-2 border-dashed p-3 text-center bg-light" style="cursor: pointer;" id="dropzone-sig-query" onclick="triggerFileInput('input-sig-query')">
+                        <input type="file" id="input-sig-query" class="d-none" accept="image/*" onchange="handleDualFileSelection(this, 'sig-query')">
+                        <div class="mb-2"><i class="fa-solid fa-signature text-secondary fs-3"></i></div>
+                        <h6 class="small fw-semibold mb-1">2. Query Specimen</h6>
+                        <span class="text-muted small" style="font-size: 0.75rem;">Upload Sample</span>
+                        
+                        <div class="mt-2 text-center" id="preview-container-sig-query" style="display: none; height: 120px;">
+                          <img src="" id="preview-img-sig-query" class="img-fluid h-100 rounded" style="object-fit: contain; background: #FFF;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Full Scan Scanning Indicator Overlay -->
+                  <div class="position-relative mt-4 rounded-3 overflow-hidden text-center bg-dark p-3 text-white d-none" id="scanning-sig-panel" style="height: 80px;">
+                    <div class="scanner-scanbar" style="display: block;"></div>
+                    <div class="d-flex align-items-center justify-content-center h-100 gap-3">
+                      <div class="spinner-border spinner-border-sm text-info"></div>
+                      <span class="fw-semibold">Computing Siamese Network Feature Distance...</span>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-3 mt-4">
+                    <button class="btn btn-primary flex-grow-1" id="btn-verify-signature" disabled onclick="runSignatureVerification()">
+                      <i class="fa-solid fa-shield-halved me-2"></i>Compute Feature Match
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="resetSignatureVerification()">Reset</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Results Panel -->
+              <div class="col-lg-5">
+                <div id="result-signature" class="card premium-card p-4 border-0 result-card h-100">
+                  <h5 class="fw-bold text-primary mb-4"><i class="fa-solid fa-square-poll-vertical me-2"></i>Siamese Analysis Results</h5>
+                  <div class="text-center py-4 mb-4 rounded-4 bg-light">
+                    <div id="result-status-badge-signature" class="mb-3">
+                      <!-- Status Badge Dynamic -->
+                    </div>
+                    <h2 class="fw-bold text-white mb-1" id="result-prediction-signature">Match Approved</h2>
+                    <span class="text-muted small">L2 Euclidean Feature Distance Model</span>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="text-muted small">Cosine Similarity Index</span>
+                      <strong class="text-primary small" id="result-confidence-signature">95.4%</strong>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-confidence" id="result-progress-signature" role="progressbar" style="width: 95.4%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="card bg-light border-0 p-3 mb-4 rounded-3">
+                    <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-circle-nodes me-2"></i>Vector Analysis Results</h6>
+                    <div class="d-flex justify-content-between small text-muted mb-2">
+                      <span>Euclidean Distance Margin:</span>
+                      <strong class="text-dark" id="sig-metric-distance">0.12 (Low)</strong>
+                    </div>
+                    <div class="d-flex justify-content-between small text-muted mb-2">
+                      <span>Pen Stroke Pressure Similarity:</span>
+                      <strong class="text-dark">High (89%)</strong>
+                    </div>
+                    <div class="d-flex justify-content-between small text-muted">
+                      <span>Dynamic Time Warping Score:</span>
+                      <strong class="text-dark">Valid (92%)</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. MODULE: FINANCIAL DOCUMENT AUTHENTICATION -->
+          <div id="panel-document" class="dashboard-workspace-panel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card premium-card p-4 border-0">
+                  <h5 class="fw-bold mb-3">Upload Financial Document</h5>
+                  <p class="text-muted small">Upload invoices, financial sheets, or loan credentials to run texture tampering analysis and visual anomaly scans.</p>
+                  
+                  <div class="upload-dropzone" id="dropzone-document" onclick="triggerFileInput('input-document')">
+                    <input type="file" id="input-document" class="d-none" accept="image/*" onchange="handleFileSelection(this, 'document')">
+                    <div class="upload-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <h6 class="fw-semibold">Drag and drop invoice or financial sheet here</h6>
+                    <p class="text-muted small mb-0">Supports JPG, PNG (Max 10MB)</p>
+                    <button class="btn btn-outline-primary btn-sm mt-3">Browse File</button>
+                    
+                    <div class="preview-container" id="preview-container-document">
+                      <img src="" id="preview-img-document" class="preview-image" alt="Document Preview">
+                      <div class="scanner-scanbar"></div>
+                      <div class="scanning-overlay">
+                        <div class="scan-spinner"></div>
+                        <h6 class="fw-bold text-white mb-1">Scanning Document Alignment...</h6>
+                        <span class="text-white-50 small">Running Convolutional Tamper Analysis</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-3 mt-4">
+                    <button class="btn btn-primary flex-grow-1" id="btn-verify-document" disabled onclick="runVerification('document')">
+                      <i class="fa-solid fa-shield-halved me-2"></i>Verify Document
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="resetVerification('document')">Reset</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Results Panel -->
+              <div class="col-lg-5">
+                <div id="result-document" class="card premium-card p-4 border-0 result-card h-100">
+                  <h5 class="fw-bold text-primary mb-4"><i class="fa-solid fa-square-poll-vertical me-2"></i>Analysis Results</h5>
+                  <div class="text-center py-4 mb-4 rounded-4 bg-light">
+                    <div id="result-status-badge-document" class="mb-3">
+                      <!-- Status Badge Dynamic -->
+                    </div>
+                    <h2 class="fw-bold text-white mb-1" id="result-prediction-document">Original Document</h2>
+                    <span class="text-muted small">Neural Network Classification Result</span>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="text-muted small">Model Confidence Score</span>
+                      <strong class="text-primary small" id="result-confidence-document">96.3%</strong>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-confidence" id="result-progress-document" role="progressbar" style="width: 96.3%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="card bg-light border-0 p-3 mb-4 rounded-3">
+                    <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-circle-nodes me-2"></i>Tamper Detection metrics</h6>
+                    <ul class="list-unstyled small mb-0 text-muted">
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Font Inconsistency Analysis (OCR)</li>
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Digital Edit / Copy-Paste Artifacts</li>
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Metadata & Exif Validation</li>
+                      <li><i class="fa-solid fa-circle-check text-success me-2"></i>Background Pattern Integrity</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. MODULE: QR PAYMENT VERIFICATION -->
+          <div id="panel-qr" class="dashboard-workspace-panel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card premium-card p-4 border-0">
+                  <h5 class="fw-bold mb-3">Verify QR Code Payment Target</h5>
+                  <p class="text-muted small">Upload screenshot of QR code to decode URLs, verify payment endpoint safety, and check blacklists.</p>
+                  
+                  <div class="upload-dropzone" id="dropzone-qr" onclick="triggerFileInput('input-qr')">
+                    <input type="file" id="input-qr" class="d-none" accept="image/*" onchange="handleFileSelection(this, 'qr')">
+                    <div class="upload-icon"><i class="fa-solid fa-qrcode"></i></div>
+                    <h6 class="fw-semibold">Drag and drop QR screenshot here</h6>
+                    <p class="text-muted small mb-0">Supports JPG, PNG (Max 10MB)</p>
+                    <button class="btn btn-outline-primary btn-sm mt-3">Browse File</button>
+                    
+                    <div class="preview-container" id="preview-container-qr">
+                      <img src="" id="preview-img-qr" class="preview-image" alt="QR Code Preview">
+                      <div class="scanner-scanbar"></div>
+                      <div class="scanning-overlay">
+                        <div class="scan-spinner"></div>
+                        <h6 class="fw-bold text-white mb-1">Decoding QR Target...</h6>
+                        <span class="text-white-50 small">Running Security Reputation Scan</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-3 mt-4">
+                    <button class="btn btn-primary flex-grow-1" id="btn-verify-qr" disabled onclick="runVerification('qr')">
+                      <i class="fa-solid fa-shield-halved me-2"></i>Decrypt and Authenticate
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="resetVerification('qr')">Reset</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Results Panel -->
+              <div class="col-lg-5">
+                <div id="result-qr" class="card premium-card p-4 border-0 result-card h-100">
+                  <h5 class="fw-bold text-primary mb-4"><i class="fa-solid fa-square-poll-vertical me-2"></i>Analysis Results</h5>
+                  <div class="text-center py-4 mb-4 rounded-4 bg-light">
+                    <div id="result-status-badge-qr" class="mb-3">
+                      <!-- Status Badge Dynamic -->
+                    </div>
+                    <h2 class="fw-bold text-white mb-1" id="result-prediction-qr">Safe Transaction</h2>
+                    <span class="text-muted small">URL Safety Index Classification</span>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="text-muted small">Model Confidence Score</span>
+                      <strong class="text-primary small" id="result-confidence-qr">99.8%</strong>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-confidence" id="result-progress-qr" role="progressbar" style="width: 99.8%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="card bg-light border-0 p-3 mb-4 rounded-3">
+                    <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-circle-nodes me-2"></i>QR Details</h6>
+                    <div class="mb-2 text-wrap"><span class="text-muted d-block small">Decoded Target URI:</span><strong class="text-dark small" id="result-qr-decoded">https://payments.securebank.com/checkout/finguard-safelink</strong></div>
+                    <ul class="list-unstyled small mb-0 text-muted">
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>SSL Certificate Validation</li>
+                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Domain Blacklist Check</li>
+                      <li><i class="fa-solid fa-circle-check text-success me-2"></i>Gateway Payment Scheme Audit</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. VERIFICATION HISTORY -->
+          <div id="panel-history" class="dashboard-workspace-panel">
+            <div class="card premium-card border-0 p-4">
+              <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+                <h5 class="fw-bold text-primary mb-0">Platform Audit Logs</h5>
+                <div class="d-flex gap-2">
+                  <select class="form-select form-select-sm border" style="width: 150px;" id="filter-history-module" onchange="applyHistoryFilters()">
+                    <option value="all">All Modules</option>
+                    <option value="currency">Currency Notes</option>
+                    <option value="cheque">Bank Cheques</option>
+                    <option value="signature">Signatures</option>
+                    <option value="document">Documents</option>
+                    <option value="qr">QR Transactions</option>
+                  </select>
+                  <select class="form-select form-select-sm border" style="width: 150px;" id="filter-history-status" onchange="applyHistoryFilters()">
+                    <option value="all">All Statuses</option>
+                    <option value="genuine">Genuine / Match</option>
+                    <option value="fraud">Fraud / Forged</option>
+                  </select>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover history-table mb-0">
+                  <thead>
+                    <tr>
+                      <th>Timestamp</th>
+                      <th>Verification Module</th>
+                      <th>Sample</th>
+                      <th>Prediction Results</th>
+                      <th>Confidence Score</th>
+                      <th>Status Badge</th>
+                    </tr>
+                  </thead>
+                  <tbody id="history-panel-table-body">
+                    <!-- Loaded dynamically via JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. SETTINGS PANEL -->
+          <div id="panel-settings" class="dashboard-workspace-panel">
+            <div class="row g-4">
+              <div class="col-lg-8">
+                <!-- Neural Model Preferences -->
+                <div class="card premium-card p-4 border-0 mb-4">
+                  <h5 class="fw-bold text-primary mb-4"><i class="fa-solid fa-microchip me-2"></i>Neural Classifier Settings</h5>
+                  
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">Active Deep Learning Model</label>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <div class="card p-3 border-2 border-primary bg-primary-subtle text-primary" style="cursor: pointer;" id="settings-model-card-cnn" onclick="selectSettingsModel('cnn')">
+                          <div class="d-flex justify-content-between mb-2">
+                            <span class="fw-bold">Custom CNN</span>
+                            <i class="fa-solid fa-circle-check fs-5"></i>
+                          </div>
+                          <small class="text-secondary opacity-75">Optimized for processing speed. 96.42% accuracy.</small>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card p-3 border-1 border-slate" style="cursor: pointer;" id="settings-model-card-eff" onclick="selectSettingsModel('efficientnet')">
+                          <div class="d-flex justify-content-between mb-2">
+                            <span class="fw-bold">EfficientNet-B0</span>
+                            <i class="fa-regular fa-circle fs-5 text-muted"></i>
+                          </div>
+                          <small class="text-muted">High accuracy transfer learned model. 98.71% accuracy.</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                      <label class="form-label fw-semibold mb-0">Minimum Confidence Filter Threshold</label>
+                      <strong class="text-primary" id="confidence-threshold-val">80%</strong>
+                    </div>
+                    <input type="range" class="form-range" min="50" max="98" value="80" id="input-confidence-threshold" oninput="updateConfidenceThresholdLabel(this.value)">
+                    <small class="text-muted">Specimens predicting below this threshold will trigger warning notifications automatically.</small>
+                  </div>
+                </div>
+
+                <!-- Admin Profile Preferences -->
+                <div class="card premium-card p-4 border-0">
+                  <h5 class="fw-bold text-primary mb-4"><i class="fa-solid fa-user-gear me-2"></i>User Profile Settings</h5>
+                  <form id="settings-profile-form" onsubmit="event.preventDefault(); alert('Settings successfully updated!');">
+                    <div class="row g-3 mb-3">
+                      <div class="col-md-6">
+                        <label class="form-label small text-muted">Full Name</label>
+                        <input type="text" class="form-control" value="Platform Operator Admin">
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label small text-muted">Email Address</label>
+                        <input type="email" class="form-control" value="operator@finguard.ai">
+                      </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Save Settings</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Systems Integrity Sidepanel -->
+              <div class="col-lg-4">
+                <div class="card premium-card p-4 border-0 h-100 bg-dark text-white">
+                  <h5 class="fw-bold mb-4 text-info"><i class="fa-solid fa-server me-2"></i>Platform Integrity</h5>
+                  
+                  <div class="mb-4">
+                    <span class="text-muted d-block small mb-2">Local Server API Latency</span>
+                    <h3 class="fw-bold mb-0 text-white">12ms <span class="fs-6 text-success fw-normal">Excellent</span></h3>
+                  </div>
+
+                  <hr class="border-secondary my-4">
+
+                  <div class="mb-4">
+                    <h6 class="fw-bold text-info mb-3">Active Services</h6>
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                      <span class="small text-white-50">Local Database (SQLite)</span>
+                      <span class="badge bg-success">Online</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                      <span class="small text-white-50">TensorFlow Hub Pipeline</span>
+                      <span class="badge bg-success">Connected</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <span class="small text-white-50">Image Verification API</span>
+                      <span class="badge bg-success">Operational</span>
+                    </div>
+                  </div>
+
+                  <hr class="border-secondary my-4">
+
+                  <div>
+                    <h6 class="fw-bold text-info mb-3">Project Metadata</h6>
+                    <table class="table table-dark table-borderless table-sm small mb-0">
+                      <tbody>
+                        <tr><td class="text-white-50">Subject:</td><td>Neural Networks</td></tr>
+                        <tr><td class="text-white-50">Case Study:</td><td>Deep Learning</td></tr>
+                        <tr><td class="text-white-50">Class:</td><td>Final Year Engineering</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+  <!-- ==================== UI LOGIN MODAL ==================== -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+      <div class="modal-content border-0 premium-card">
+        <div class="modal-body p-4">
+          <div class="text-center mb-4">
+            <i class="fa-solid fa-shield-halved text-secondary fs-1 mb-2"></i>
+            <h4 class="fw-bold text-primary">FinGuard AI Operator</h4>
+            <p class="text-muted small">Enter credentials to authenticate session</p>
+          </div>
+          <form id="mock-login-form" onsubmit="handleMockLogin(event)">
+            <div class="mb-3">
+              <label class="form-label small text-muted">Operator Email</label>
+              <div class="input-group">
+                <span class="input-group-text border-end-0 bg-white"><i class="fa-solid fa-envelope text-muted"></i></span>
+                <input type="email" class="form-control border-start-0 ps-0" placeholder="operator@finguard.ai" value="operator@finguard.ai" required>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="form-label small text-muted">Security Key</label>
+              <div class="input-group">
+                <span class="input-group-text border-end-0 bg-white"><i class="fa-solid fa-lock text-muted"></i></span>
+                <input type="password" class="form-control border-start-0 ps-0" placeholder="••••••••" value="admin123" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2.5">
+              Authenticate Operator
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Library Packages -->
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Chart.js Package -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Main Script -->
+  <script src="app.js"></script>
+</body>
+</html>
