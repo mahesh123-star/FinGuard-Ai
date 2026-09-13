@@ -349,7 +349,7 @@ function generatePredictionResult(moduleKey) {
   let confidence = 0;
   
   if (moduleKey === "currency") {
-    predictionLabel = isGenuine ? "Genuine USD ($100)" : "Counterfeit USD Note";
+    predictionLabel = isGenuine ? "Real" : "Fake";
     confidence = isGenuine 
       ? (isEff ? (98.0 + Math.random() * 1.9) : (94.5 + Math.random() * 3.0))
       : (isEff ? (89.5 + Math.random() * 8.5) : (82.1 + Math.random() * 12.0));
@@ -359,7 +359,7 @@ function generatePredictionResult(moduleKey) {
       ? (isEff ? (97.0 + Math.random() * 2.8) : (92.1 + Math.random() * 4.5))
       : (isEff ? (91.2 + Math.random() * 6.0) : (84.5 + Math.random() * 9.5));
   } else if (moduleKey === "document") {
-    predictionLabel = isGenuine ? "Original Invoice" : "Tampered Layout Checksum";
+    predictionLabel = isGenuine ? "Authentic" : "Tampered/Forged";
     confidence = isGenuine 
       ? (isEff ? (96.5 + Math.random() * 3.2) : (91.0 + Math.random() * 5.0))
       : (isEff ? (88.4 + Math.random() * 9.0) : (80.2 + Math.random() * 14.5));
@@ -750,16 +750,14 @@ function getBreakdownChartData() {
   });
   
   return {
-    labels: ['Currency', 'Cheques', 'Signatures', 'Documents', 'QR Code'],
+    labels: ['Currency', 'Documents', 'QR Code'],
     datasets: [{
       data: [
         counts.currency || 1,
-        counts.cheque || 1,
-        counts.signature || 1,
         counts.document || 1,
         counts.qr || 1
       ],
-      backgroundColor: ['#3B82F6', '#0EA5E9', '#8B5CF6', '#F59E0B', '#10B981'],
+      backgroundColor: ['#3B82F6', '#F59E0B', '#10B981'],
       borderWidth: 2,
       borderColor: '#0B0F19'
     }]

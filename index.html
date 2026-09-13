@@ -236,12 +236,7 @@
           <a href="#" class="sidebar-link" onclick="switchDashboardPanel('currency', this)">
             <i class="fa-solid fa-money-bill-wave"></i> Currency Notes
           </a>
-          <a href="#" class="sidebar-link" onclick="switchDashboardPanel('cheque', this)">
-            <i class="fa-solid fa-money-check-dollar"></i> Bank Cheques
-          </a>
-          <a href="#" class="sidebar-link" onclick="switchDashboardPanel('signature', this)">
-            <i class="fa-solid fa-signature"></i> Signature Matching
-          </a>
+          
           <a href="#" class="sidebar-link" onclick="switchDashboardPanel('document', this)">
             <i class="fa-solid fa-file-invoice-dollar"></i> Doc Authentication
           </a>
@@ -439,12 +434,12 @@
               <div class="col-lg-7">
                 <div class="card premium-card p-4 border-0">
                   <h5 class="fw-bold mb-3">Upload Currency Specimen</h5>
-                  <p class="text-muted small">Verify banknotes for counterfeits by uploading high-definition scans of the front bill surface.</p>
+                  <p class="text-muted small">Verify Indian currency notes for counterfeits by uploading high-definition scans of the front bill surface.</p>
                   
                   <div class="upload-dropzone" id="dropzone-currency" onclick="triggerFileInput('input-currency')">
                     <input type="file" id="input-currency" class="d-none" accept="image/*" onchange="handleFileSelection(this, 'currency')">
                     <div class="upload-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
-                    <h6 class="fw-semibold">Drag and drop banknote image here</h6>
+                    <h6 class="fw-semibold">Drag and drop Indian currency note image here</h6>
                     <p class="text-muted small mb-0">Supports JPG, PNG (Max 10MB)</p>
                     <button class="btn btn-outline-primary btn-sm mt-3">Browse File</button>
                     
@@ -476,7 +471,7 @@
                     <div id="result-status-badge-currency" class="mb-3">
                       <!-- Status Badge Dynamic -->
                     </div>
-                    <h2 class="fw-bold text-white mb-1" id="result-prediction-currency">Genuine USD</h2>
+                    <h2 class="fw-bold text-white mb-1" id="result-prediction-currency">Real or Fake</h2>
                     <span class="text-muted small">Neural Network Classification Result</span>
                   </div>
                   
@@ -498,175 +493,6 @@
                       <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Security Thread Color Dispersion</li>
                       <li><i class="fa-solid fa-circle-check text-success me-2"></i>Infrared / Ultraviolet Pattern Match</li>
                     </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. MODULE: BANK CHEQUE VERIFICATION -->
-          <div id="panel-cheque" class="dashboard-workspace-panel">
-            <div class="row g-4">
-              <div class="col-lg-7">
-                <div class="card premium-card p-4 border-0">
-                  <h5 class="fw-bold mb-3">Upload Bank Cheque</h5>
-                  <p class="text-muted small">Upload scans of financial cheques to verify magnetic ink fields (MICR), details, and detect layout anomalies.</p>
-                  
-                  <div class="upload-dropzone" id="dropzone-cheque" onclick="triggerFileInput('input-cheque')">
-                    <input type="file" id="input-cheque" class="d-none" accept="image/*" onchange="handleFileSelection(this, 'cheque')">
-                    <div class="upload-icon"><i class="fa-solid fa-money-check-dollar"></i></div>
-                    <h6 class="fw-semibold">Drag and drop cheque image here</h6>
-                    <p class="text-muted small mb-0">Supports JPG, PNG (Max 10MB)</p>
-                    <button class="btn btn-outline-primary btn-sm mt-3">Browse File</button>
-                    
-                    <div class="preview-container" id="preview-container-cheque">
-                      <img src="" id="preview-img-cheque" class="preview-image" alt="Cheque Preview">
-                      <div class="scanner-scanbar"></div>
-                      <div class="scanning-overlay">
-                        <div class="scan-spinner"></div>
-                        <h6 class="fw-bold text-white mb-1">Analyzing Cheque Fields...</h6>
-                        <span class="text-white-50 small">Evaluating MICR line & Layout Structure</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="d-flex gap-3 mt-4">
-                    <button class="btn btn-primary flex-grow-1" id="btn-verify-cheque" disabled onclick="runVerification('cheque')">
-                      <i class="fa-solid fa-shield-halved me-2"></i>Verify Instrument
-                    </button>
-                    <button class="btn btn-outline-secondary" onclick="resetVerification('cheque')">Reset</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Results Panel -->
-              <div class="col-lg-5">
-                <div id="result-cheque" class="card premium-card p-4 border-0 result-card h-100">
-                  <h5 class="fw-bold text-primary mb-4"><i class="fa-solid fa-square-poll-vertical me-2"></i>Analysis Results</h5>
-                  <div class="text-center py-4 mb-4 rounded-4 bg-light">
-                    <div id="result-status-badge-cheque" class="mb-3">
-                      <!-- Status Badge Dynamic -->
-                    </div>
-                    <h2 class="fw-bold text-white mb-1" id="result-prediction-cheque">Genuine Instrument</h2>
-                    <span class="text-muted small">Neural Network Classification Result</span>
-                  </div>
-                  
-                  <div class="mb-4">
-                    <div class="d-flex justify-content-between mb-2">
-                      <span class="text-muted small">Model Confidence Score</span>
-                      <strong class="text-primary small" id="result-confidence-cheque">97.8%</strong>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-confidence" id="result-progress-cheque" role="progressbar" style="width: 97.8%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="card bg-light border-0 p-3 mb-4 rounded-3">
-                    <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-circle-nodes me-2"></i>Instrument Metrics</h6>
-                    <ul class="list-unstyled small mb-0 text-muted">
-                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>MICR E-13B Codeline Recognition</li>
-                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Cheque Layout Integrity</li>
-                      <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Amount Legal vs. Courtesy match</li>
-                      <li><i class="fa-solid fa-circle-check text-success me-2"></i>Date Modification Analysis</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. MODULE: SIGNATURE MATCHING -->
-          <div id="panel-signature" class="dashboard-workspace-panel">
-            <div class="row g-4">
-              <div class="col-lg-7">
-                <div class="card premium-card p-4 border-0">
-                  <h5 class="fw-bold mb-3">Signature Verification (Siamese Networks)</h5>
-                  <p class="text-muted small">Perform dynamic signature matching using contrastive feature learning. Upload a reference template signature and the query specimen to compare similarities.</p>
-                  
-                  <div class="row g-3">
-                    <!-- Reference Signature Upload -->
-                    <div class="col-md-6">
-                      <div class="card border border-2 border-dashed p-3 text-center bg-light" style="cursor: pointer;" id="dropzone-sig-ref" onclick="triggerFileInput('input-sig-ref')">
-                        <input type="file" id="input-sig-ref" class="d-none" accept="image/*" onchange="handleDualFileSelection(this, 'sig-ref')">
-                        <div class="mb-2"><i class="fa-solid fa-file-signature text-secondary fs-3"></i></div>
-                        <h6 class="small fw-semibold mb-1">1. Reference Signature</h6>
-                        <span class="text-muted small" style="font-size: 0.75rem;">Upload Template</span>
-                        
-                        <div class="mt-2 text-center" id="preview-container-sig-ref" style="display: none; height: 120px;">
-                          <img src="" id="preview-img-sig-ref" class="img-fluid h-100 rounded" style="object-fit: contain; background: #FFF;">
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <!-- Query Signature Upload -->
-                    <div class="col-md-6">
-                      <div class="card border border-2 border-dashed p-3 text-center bg-light" style="cursor: pointer;" id="dropzone-sig-query" onclick="triggerFileInput('input-sig-query')">
-                        <input type="file" id="input-sig-query" class="d-none" accept="image/*" onchange="handleDualFileSelection(this, 'sig-query')">
-                        <div class="mb-2"><i class="fa-solid fa-signature text-secondary fs-3"></i></div>
-                        <h6 class="small fw-semibold mb-1">2. Query Specimen</h6>
-                        <span class="text-muted small" style="font-size: 0.75rem;">Upload Sample</span>
-                        
-                        <div class="mt-2 text-center" id="preview-container-sig-query" style="display: none; height: 120px;">
-                          <img src="" id="preview-img-sig-query" class="img-fluid h-100 rounded" style="object-fit: contain; background: #FFF;">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Full Scan Scanning Indicator Overlay -->
-                  <div class="position-relative mt-4 rounded-3 overflow-hidden text-center bg-dark p-3 text-white d-none" id="scanning-sig-panel" style="height: 80px;">
-                    <div class="scanner-scanbar" style="display: block;"></div>
-                    <div class="d-flex align-items-center justify-content-center h-100 gap-3">
-                      <div class="spinner-border spinner-border-sm text-info"></div>
-                      <span class="fw-semibold">Computing Siamese Network Feature Distance...</span>
-                    </div>
-                  </div>
-
-                  <div class="d-flex gap-3 mt-4">
-                    <button class="btn btn-primary flex-grow-1" id="btn-verify-signature" disabled onclick="runSignatureVerification()">
-                      <i class="fa-solid fa-shield-halved me-2"></i>Compute Feature Match
-                    </button>
-                    <button class="btn btn-outline-secondary" onclick="resetSignatureVerification()">Reset</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Results Panel -->
-              <div class="col-lg-5">
-                <div id="result-signature" class="card premium-card p-4 border-0 result-card h-100">
-                  <h5 class="fw-bold text-primary mb-4"><i class="fa-solid fa-square-poll-vertical me-2"></i>Siamese Analysis Results</h5>
-                  <div class="text-center py-4 mb-4 rounded-4 bg-light">
-                    <div id="result-status-badge-signature" class="mb-3">
-                      <!-- Status Badge Dynamic -->
-                    </div>
-                    <h2 class="fw-bold text-white mb-1" id="result-prediction-signature">Match Approved</h2>
-                    <span class="text-muted small">L2 Euclidean Feature Distance Model</span>
-                  </div>
-                  
-                  <div class="mb-4">
-                    <div class="d-flex justify-content-between mb-2">
-                      <span class="text-muted small">Cosine Similarity Index</span>
-                      <strong class="text-primary small" id="result-confidence-signature">95.4%</strong>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-confidence" id="result-progress-signature" role="progressbar" style="width: 95.4%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="card bg-light border-0 p-3 mb-4 rounded-3">
-                    <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-circle-nodes me-2"></i>Vector Analysis Results</h6>
-                    <div class="d-flex justify-content-between small text-muted mb-2">
-                      <span>Euclidean Distance Margin:</span>
-                      <strong class="text-dark" id="sig-metric-distance">0.12 (Low)</strong>
-                    </div>
-                    <div class="d-flex justify-content-between small text-muted mb-2">
-                      <span>Pen Stroke Pressure Similarity:</span>
-                      <strong class="text-dark">High (89%)</strong>
-                    </div>
-                    <div class="d-flex justify-content-between small text-muted">
-                      <span>Dynamic Time Warping Score:</span>
-                      <strong class="text-dark">Valid (92%)</strong>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -716,7 +542,7 @@
                     <div id="result-status-badge-document" class="mb-3">
                       <!-- Status Badge Dynamic -->
                     </div>
-                    <h2 class="fw-bold text-white mb-1" id="result-prediction-document">Original Document</h2>
+                    <h2 class="fw-bold text-white mb-1" id="result-prediction-document">Authentic or Tampered/Forged</h2>
                     <span class="text-muted small">Neural Network Classification Result</span>
                   </div>
                   
@@ -824,8 +650,7 @@
                   <select class="form-select form-select-sm border" style="width: 150px;" id="filter-history-module" onchange="applyHistoryFilters()">
                     <option value="all">All Modules</option>
                     <option value="currency">Currency Notes</option>
-                    <option value="cheque">Bank Cheques</option>
-                    <option value="signature">Signatures</option>
+                    
                     <option value="document">Documents</option>
                     <option value="qr">QR Transactions</option>
                   </select>
