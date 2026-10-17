@@ -243,6 +243,9 @@
           <a href="#" class="sidebar-link" onclick="switchDashboardPanel('qr', this)">
             <i class="fa-solid fa-qrcode"></i> QR Transactions
           </a>
+          <a href="#" class="sidebar-link" onclick="switchDashboardPanel('comparison', this)">
+            <i class="fa-solid fa-code-compare"></i> Model Comparison
+          </a>
           
           <span class="menu-label mt-4">Security Administration</span>
           <a href="#" class="sidebar-link" onclick="switchDashboardPanel('history', this)">
@@ -404,7 +407,7 @@
             <div class="card premium-card border-0 p-4">
               <div class="d-flex justify-content-between align-items-center mb-4">
                 <h5 class="card-title fw-bold text-primary mb-0">Recent Verification Activity</h5>
-                <button class="btn btn-outline-primary btn-sm" onclick="switchDashboardPanel('history', document.querySelector('[onclick*=\'history\']'))">
+                <button class="btn btn-outline-primary btn-sm" onclick="switchDashboardPanel('history', document.querySelector('.sidebar-link[onclick*=history]'))">
                   View Full History
                 </button>
               </div>
@@ -635,6 +638,264 @@
                       <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i>Domain Blacklist Check</li>
                       <li><i class="fa-solid fa-circle-check text-success me-2"></i>Gateway Payment Scheme Audit</li>
                     </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. MODULE: DUAL-MODEL ARCHITECTURE COMPARISON -->
+          <div id="panel-comparison" class="dashboard-workspace-panel">
+            <div class="row g-4">
+              <!-- Left Column: Setup & Upload -->
+              <div class="col-lg-5">
+                <div class="card premium-card p-4 border-0 mb-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="fw-bold mb-0">Specimen Benchmarking</h5>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1 rounded-pill small">
+                      <i class="fa-solid fa-code-compare me-1"></i> Dual Inference
+                    </span>
+                  </div>
+                  <p class="text-muted small">Select an inspection domain, upload an image specimen, and evaluate Custom CNN against EfficientNet-B0 simultaneously.</p>
+                  
+                  <!-- Domain Category Selection -->
+                  <label class="form-label text-muted small fw-semibold text-uppercase mb-2">Target Domain</label>
+                  <div class="d-flex flex-wrap gap-2 mb-4" id="cmp-category-group">
+                    <button type="button" class="cmp-category-tab active" data-category="currency" onclick="selectComparisonCategory('currency', this)">
+                      <i class="fa-solid fa-money-bill-wave"></i> Currency Notes
+                    </button>
+                    <button type="button" class="cmp-category-tab" data-category="document" onclick="selectComparisonCategory('document', this)">
+                      <i class="fa-solid fa-file-invoice-dollar"></i> Documents
+                    </button>
+                    <button type="button" class="cmp-category-tab" data-category="qr" onclick="selectComparisonCategory('qr', this)">
+                      <i class="fa-solid fa-qrcode"></i> QR Transactions
+                    </button>
+                  </div>
+
+                  <!-- Upload Dropzone -->
+                  <div class="upload-dropzone" id="dropzone-comparison" onclick="triggerFileInput('input-comparison')">
+                    <input type="file" id="input-comparison" class="d-none" accept="image/*" onchange="handleFileSelection(this, 'comparison')">
+                    <div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                    <h6 class="fw-semibold">Drop evaluation specimen here</h6>
+                    <p class="text-muted small mb-0">Supports JPG, PNG, WEBP (Max 10MB)</p>
+                    <button class="btn btn-outline-primary btn-sm mt-3">Browse File</button>
+                    
+                    <div class="preview-container" id="preview-container-comparison">
+                      <img src="" id="preview-img-comparison" class="preview-image" alt="Specimen Preview">
+                      <div class="scanner-scanbar"></div>
+                      <div class="scanning-overlay">
+                        <div class="scan-spinner"></div>
+                        <h6 class="fw-bold text-white mb-1">Benchmarking Dual Networks...</h6>
+                        <span class="text-white-50 small">Running CNN & EfficientNet-B0</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Action Buttons -->
+                  <div class="d-flex gap-3 mt-4">
+                    <button class="btn btn-primary flex-grow-1" id="btn-compare-models" disabled onclick="runModelComparison()">
+                      <i class="fa-solid fa-bolt me-2"></i>Compare Models
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="resetComparison()">Reset</button>
+                  </div>
+                </div>
+
+                <!-- Architecture Overview Card -->
+                <div class="card premium-card p-4 border-0">
+                  <h6 class="fw-bold text-primary mb-3"><i class="fa-solid fa-microchip me-2"></i>Loaded Architectures</h6>
+                  <div class="d-flex flex-column gap-3">
+                    <div class="cmp-metric-box">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <strong class="text-white small">Custom CNN (CBAM + DnCNN)</strong>
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill">Loaded</span>
+                      </div>
+                      <p class="text-muted small mb-0 mt-1">Specialized spatial/channel attention & noise reduction. Normalization: [0, 1].</p>
+                    </div>
+                    <div class="cmp-metric-box">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <strong class="text-white small">EfficientNet-B0 (Transfer Learning)</strong>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill">Loaded</span>
+                      </div>
+                      <p class="text-muted small mb-0 mt-1">Pretrained ImageNet compound scaled backbone with internal rescaling.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Results & Benchmark Dashboard -->
+              <div class="col-lg-7">
+                <!-- Awaiting specimen placeholder -->
+                <div id="comparison-placeholder" class="card premium-card p-5 border-0 text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                  <div class="card-icon icon-blue mb-3" style="width: 70px; height: 70px; font-size: 1.8rem;">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                  </div>
+                  <h5 class="fw-bold text-white mb-2">Awaiting Specimen for Comparison</h5>
+                  <p class="text-muted small max-w-500 mb-0">Select a category on the left, upload an image specimen, and click <strong>Compare Models</strong> to execute dual inference and view side-by-side performance metrics.</p>
+                </div>
+
+                <!-- Comparison Results Container -->
+                <div id="comparison-results-wrapper" style="display: none;">
+                  <!-- Top Consensus Banner -->
+                  <div id="comparison-banner" class="cmp-banner agreement mb-4">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                      <div class="d-flex align-items-center gap-3">
+                        <div id="comparison-banner-icon" class="fs-3 text-success">
+                          <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div>
+                          <h6 class="fw-bold mb-0 text-white" id="comparison-agreement-title">Model Consensus Verified</h6>
+                          <span class="text-muted small" id="comparison-agreement-detail">Both architectures agree on classification.</span>
+                        </div>
+                      </div>
+                      <div id="comparison-latency-badge" class="cmp-latency-pill">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span id="comparison-latency-text">Custom CNN was 38.4ms faster</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Side-by-Side Model Cards -->
+                  <div class="row g-3 mb-4">
+                    <!-- Left: Custom CNN Card -->
+                    <div class="col-md-6">
+                      <div class="card cmp-card cnn-card p-3 h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                          <h6 class="fw-bold text-primary mb-0">Custom CNN + CBAM</h6>
+                          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-0 rounded-pill small">Targeted</span>
+                        </div>
+                        <span class="text-muted small mb-3 d-block">CBAM Attention & Denoising</span>
+
+                        <div class="text-center py-3 mb-3 rounded-3" style="background: rgba(15, 23, 42, 0.6);">
+                          <div id="cmp-status-badge-cnn" class="mb-2"></div>
+                          <h3 class="fw-bold text-white mb-1" id="cmp-pred-cnn">--</h3>
+                          <span class="text-muted small">CNN Prediction</span>
+                        </div>
+
+                        <div class="mb-3">
+                          <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted small">Confidence</span>
+                            <strong class="text-primary small" id="cmp-conf-cnn">0%</strong>
+                          </div>
+                          <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-primary" id="cmp-progress-cnn" role="progressbar" style="width: 0%;"></div>
+                          </div>
+                        </div>
+
+                        <div class="row g-2 text-center small text-muted">
+                          <div class="col-6">
+                            <div class="cmp-metric-box">
+                              <span class="d-block small">Latency</span>
+                              <strong class="text-white" id="cmp-time-cnn">-- ms</strong>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="cmp-metric-box">
+                              <span class="d-block small">Raw Prob</span>
+                              <strong class="text-white" id="cmp-prob-cnn">--</strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Right: EfficientNet-B0 Card -->
+                    <div class="col-md-6">
+                      <div class="card cmp-card eff-card p-3 h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                          <h6 class="fw-bold text-success mb-0">EfficientNet-B0</h6>
+                          <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-0 rounded-pill small">Transfer</span>
+                        </div>
+                        <span class="text-muted small mb-3 d-block">Compound Scaled Backbone</span>
+
+                        <div class="text-center py-3 mb-3 rounded-3" style="background: rgba(15, 23, 42, 0.6);">
+                          <div id="cmp-status-badge-eff" class="mb-2"></div>
+                          <h3 class="fw-bold text-white mb-1" id="cmp-pred-eff">--</h3>
+                          <span class="text-muted small">EfficientNet Prediction</span>
+                        </div>
+
+                        <div class="mb-3">
+                          <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted small">Confidence</span>
+                            <strong class="text-success small" id="cmp-conf-eff">0%</strong>
+                          </div>
+                          <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-success" id="cmp-progress-eff" role="progressbar" style="width: 0%;"></div>
+                          </div>
+                        </div>
+
+                        <div class="row g-2 text-center small text-muted">
+                          <div class="col-6">
+                            <div class="cmp-metric-box">
+                              <span class="d-block small">Latency</span>
+                              <strong class="text-white" id="cmp-time-eff">-- ms</strong>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="cmp-metric-box">
+                              <span class="d-block small">Raw Prob</span>
+                              <strong class="text-white" id="cmp-prob-eff">--</strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Architectural Benchmark Breakdown Table -->
+                  <div class="card premium-card p-4 border-0">
+                    <h6 class="fw-bold text-primary mb-3"><i class="fa-solid fa-table-list me-2"></i>Detailed Architecture Comparison</h6>
+                    <div class="table-responsive">
+                      <table class="table table-sm table-dark table-borderless mb-0 small" style="background: transparent;">
+                        <thead>
+                          <tr class="text-muted border-bottom border-secondary">
+                            <th>Evaluation Parameter</th>
+                            <th class="text-primary">Custom CNN + CBAM</th>
+                            <th class="text-success">EfficientNet-B0</th>
+                          </tr>
+                        </thead>
+                        <tbody id="cmp-table-body">
+                          <tr>
+                            <td class="text-muted">Model Family</td>
+                            <td class="text-white">Custom Deep CNN</td>
+                            <td class="text-white">Transfer Learning (ImageNet)</td>
+                          </tr>
+                          <tr>
+                            <td class="text-muted">Enhancement Blocks</td>
+                            <td class="text-white">CBAM (Spatial+Channel) + DnCNN</td>
+                            <td class="text-white">MBConv / Squeeze-and-Excitation</td>
+                          </tr>
+                          <tr>
+                            <td class="text-muted">Preprocessing Pipeline</td>
+                            <td class="text-white">Normalized [0, 1]</td>
+                            <td class="text-white">Raw [0, 255] (Internal Rescaling)</td>
+                          </tr>
+                          <tr>
+                            <td class="text-muted">Inference Latency</td>
+                            <td class="text-white" id="table-time-cnn">--</td>
+                            <td class="text-white" id="table-time-eff">--</td>
+                          </tr>
+                          <tr>
+                            <td class="text-muted">Raw Sigmoid Prob</td>
+                            <td class="text-white" id="table-prob-cnn">--</td>
+                            <td class="text-white" id="table-prob-eff">--</td>
+                          </tr>
+                          <tr>
+                            <td class="text-muted">Confidence Score</td>
+                            <td class="text-white fw-bold" id="table-conf-cnn">--</td>
+                            <td class="text-white fw-bold" id="table-conf-eff">--</td>
+                          </tr>
+                          <tr>
+                            <td class="text-muted">Predicted Class</td>
+                            <td class="text-white fw-bold" id="table-pred-cnn">--</td>
+                            <td class="text-white fw-bold" id="table-pred-eff">--</td>
+                          </tr>
+                          <tr>
+                            <td class="text-muted">Consensus Status</td>
+                            <td colspan="2" class="text-white fw-bold" id="table-consensus">--</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>

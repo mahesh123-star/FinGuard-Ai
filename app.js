@@ -7,35 +7,17 @@ let verificationHistory = [
     timestamp: "2026-07-23 09:05:12",
     module: "Currency Notes",
     moduleKey: "currency",
-    fileName: "usd_100_front.jpg",
-    prediction: "Genuine USD ($100)",
+    fileName: "inr_500_front.jpg",
+    prediction: "Real",
     confidence: 99.2,
     status: "genuine"
-  },
-  {
-    timestamp: "2026-07-23 08:58:45",
-    module: "Signature Matching",
-    moduleKey: "signature",
-    fileName: "sig_query_check.png",
-    prediction: "Forged / High Discrepancy",
-    confidence: 42.1,
-    status: "fraud"
-  },
-  {
-    timestamp: "2026-07-23 08:15:30",
-    module: "Bank Cheques",
-    moduleKey: "cheque",
-    fileName: "cheque_chq8293.png",
-    prediction: "Tampered Legal Amount",
-    confidence: 61.5,
-    status: "fraud"
   },
   {
     timestamp: "2026-07-23 07:44:22",
     module: "Doc Authentication",
     moduleKey: "document",
     fileName: "invoice_28491.pdf",
-    prediction: "Original Document",
+    prediction: "Authentic",
     confidence: 98.4,
     status: "genuine"
   },
@@ -44,7 +26,7 @@ let verificationHistory = [
     module: "QR Transactions",
     moduleKey: "qr",
     fileName: "qr_receipt_scan.png",
-    prediction: "Safe Transaction URL",
+    prediction: "Safe QR Code",
     confidence: 99.8,
     status: "genuine"
   }
@@ -120,6 +102,7 @@ function switchDashboardPanel(panelId, sidebarElement = null) {
     signature: "Signature Specimen Matching",
     document: "Financial Document Authentication",
     qr: "QR Code Transaction Security",
+    comparison: "Dual-Model Architecture Comparison",
     history: "Verification Audit History Logs",
     settings: "Model Configurations & Parameters"
   };
@@ -169,7 +152,7 @@ function triggerFileInput(inputId) {
 }
 
 function setupDragAndDrop() {
-  const dropzones = ["currency", "cheque", "document", "qr"];
+  const dropzones = ["currency", "cheque", "document", "qr", "comparison"];
   
   dropzones.forEach(zone => {
     const el = document.getElementById(`dropzone-${zone}`);
@@ -202,24 +185,40 @@ function setupDragAndDrop() {
 function handleFileSelection(input, moduleKey) {
   const file = input.files[0];
   if (!file) return;
-  
+
   const reader = new FileReader();
   reader.onload = function(e) {
+    const dropzone = document.getElementById(`dropzone-${moduleKey}`);
     const previewContainer = document.getElementById(`preview-container-${moduleKey}`);
     const previewImg = document.getElementById(`preview-img-${moduleKey}`);
-    const verifyBtn = document.getElementById(`btn-verify-${moduleKey}`);
-    
+    const verifyBtn = moduleKey === 'comparison'
+      ? document.getElementById('btn-compare-models')
+      : document.getElementById(`btn-verify-${moduleKey}`);
+
     if (previewImg && previewContainer) {
       previewImg.src = e.target.result;
       previewContainer.style.display = "block";
     }
-    
+
+    // Hide the upload prompt elements (icon, text, browse button)
+    if (dropzone) {
+      const icon = dropzone.querySelector('.upload-icon');
+      const heading = dropzone.querySelector('h6');
+      const subtext = dropzone.querySelector('p');
+      const browseBtn = dropzone.querySelector('button');
+      if (icon) icon.style.display = 'none';
+      if (heading) heading.style.display = 'none';
+      if (subtext) subtext.style.display = 'none';
+      if (browseBtn) browseBtn.style.display = 'none';
+    }
+
     if (verifyBtn) {
       verifyBtn.removeAttribute("disabled");
     }
   };
   reader.readAsDataURL(file);
 }
+
 
 // Handles side-by-side uploads in Signature Module
 function handleDualFileSelection(input, type) {
@@ -253,62 +252,306 @@ function handleDualFileSelection(input, type) {
 }
 
 function resetVerification(moduleKey) {
-  // Clear inputs
   const input = document.getElementById(`input-${moduleKey}`);
   if (input) input.value = "";
-  
+
   // Hide preview
   const previewContainer = document.getElementById(`preview-container-${moduleKey}`);
   if (previewContainer) previewContainer.style.display = "none";
-  
+
   // Disable verify button
   const verifyBtn = document.getElementById(`btn-verify-${moduleKey}`);
   if (verifyBtn) verifyBtn.setAttribute("disabled", "true");
-  
+
   // Hide results
   const resultCard = document.getElementById(`result-${moduleKey}`);
   if (resultCard) resultCard.style.display = "none";
+
+  // Restore the dropzone browse UI (icon, text, browse button)
+  const dropzone = document.getElementById(`dropzone-${moduleKey}`);
+  if (dropzone) {
+    const icon = dropzone.querySelector('.upload-icon');
+    const heading = dropzone.querySelector('h6');
+    const subtext = dropzone.querySelector('p');
+    const browseBtn = dropzone.querySelector('button');
+    if (icon) icon.style.display = '';
+    if (heading) heading.style.display = '';
+    if (subtext) subtext.style.display = '';
+    if (browseBtn) browseBtn.style.display = '';
+  }
 }
 
-function resetSignatureVerification() {
-  signatureUploads.ref = null;
-  signatureUploads.query = null;
+// ==================== DUAL-MODEL COMPARISON CONTROLLER ====================
+
+let activeComparisonCategory = "currency";
+
+function selectComparisonCategory(category, btnElement) {
+  activeComparisonCategory = category;
   
-  document.getElementById("input-sig-ref").value = "";
-  document.getElementById("input-sig-query").value = "";
-  
-  document.getElementById("preview-container-sig-ref").style.display = "none";
-  document.getElementById("preview-container-sig-query").style.display = "none";
-  
-  document.getElementById("btn-verify-signature").setAttribute("disabled", "true");
-  document.getElementById("result-signature").style.display = "none";
+  const buttons = document.querySelectorAll("#cmp-category-group .cmp-category-tab");
+  buttons.forEach(b => b.classList.remove("active"));
+  if (btnElement) {
+    btnElement.classList.add("active");
+  }
+}
+
+function resetComparison() {
+  const input = document.getElementById("input-comparison");
+  if (input) input.value = "";
+
+  const previewContainer = document.getElementById("preview-container-comparison");
+  if (previewContainer) previewContainer.style.display = "none";
+
+  const compareBtn = document.getElementById("btn-compare-models");
+  if (compareBtn) compareBtn.setAttribute("disabled", "true");
+
+  const resultsWrapper = document.getElementById("comparison-results-wrapper");
+  if (resultsWrapper) resultsWrapper.style.display = "none";
+
+  const placeholder = document.getElementById("comparison-placeholder");
+  if (placeholder) {
+    placeholder.style.display = "flex";
+  }
+
+  const dropzone = document.getElementById("dropzone-comparison");
+  if (dropzone) {
+    const icon = dropzone.querySelector('.upload-icon');
+    const heading = dropzone.querySelector('h6');
+    const subtext = dropzone.querySelector('p');
+    const browseBtn = dropzone.querySelector('button');
+    if (icon) icon.style.display = '';
+    if (heading) heading.style.display = '';
+    if (subtext) subtext.style.display = '';
+    if (browseBtn) browseBtn.style.display = '';
+  }
+}
+
+async function runModelComparison() {
+  const container = document.getElementById("preview-container-comparison");
+  const compareBtn = document.getElementById("btn-compare-models");
+  const inputEl = document.getElementById("input-comparison");
+
+  if (!container || !compareBtn || !inputEl) return;
+
+  const file = inputEl.files[0];
+  if (!file) {
+    alert("Please select an image file first.");
+    return;
+  }
+
+  // Show loading indicator
+  container.classList.add("scanning");
+  compareBtn.setAttribute("disabled", "true");
+  compareBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Benchmarking Dual Models...';
+
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("category", activeComparisonCategory);
+
+    const resp = await fetch(`${FLASK_BASE}/api/compare-models`, {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await resp.json();
+
+    if (!resp.ok || !result.success) {
+      throw new Error(result.error || "Failed to process comparison");
+    }
+
+    container.classList.remove("scanning");
+
+    // Display Real Dual Model Results in UI
+    displayComparisonResults(result);
+
+  } catch (err) {
+    container.classList.remove("scanning");
+    console.error("[FinGuard Comparison API Error]:", err.message);
+    alert(`Comparison Error: ${err.message}`);
+  } finally {
+    compareBtn.removeAttribute("disabled");
+    compareBtn.innerHTML = '<i class="fa-solid fa-bolt me-2"></i>Compare Models';
+  }
+}
+
+function displayComparisonResults(data) {
+  const placeholder = document.getElementById("comparison-placeholder");
+  const wrapper = document.getElementById("comparison-results-wrapper");
+  if (!wrapper) return;
+
+  if (placeholder) placeholder.style.display = "none";
+  wrapper.style.display = "block";
+
+  // 1. Consensus Banner
+  const banner = document.getElementById("comparison-banner");
+  const bannerIcon = document.getElementById("comparison-banner-icon");
+  const bannerTitle = document.getElementById("comparison-agreement-title");
+  const bannerDetail = document.getElementById("comparison-agreement-detail");
+  const latencyText = document.getElementById("comparison-latency-text");
+
+  if (data.agreement) {
+    banner.className = "cmp-banner agreement mb-4";
+    bannerIcon.className = "fs-3 text-success";
+    bannerIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+    bannerTitle.innerText = "Architectural Consensus: Verified";
+    bannerDetail.innerText = data.agreement_text;
+  } else {
+    banner.className = "cmp-banner divergence mb-4";
+    bannerIcon.className = "fs-3 text-warning";
+    bannerIcon.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+    bannerTitle.innerText = "Architectural Divergence Detected";
+    bannerDetail.innerText = data.agreement_text;
+  }
+
+  if (latencyText) {
+    latencyText.innerText = data.speed_summary || "Inference completed";
+  }
+
+  // 2. Custom CNN Card
+  const cnn = data.cnn || {};
+  const predCnn = document.getElementById("cmp-pred-cnn");
+  const confCnn = document.getElementById("cmp-conf-cnn");
+  const progCnn = document.getElementById("cmp-progress-cnn");
+  const timeCnn = document.getElementById("cmp-time-cnn");
+  const probCnn = document.getElementById("cmp-prob-cnn");
+  const badgeCnn = document.getElementById("cmp-status-badge-cnn");
+
+  if (cnn.available) {
+    if (predCnn) predCnn.innerText = cnn.prediction;
+    if (confCnn) confCnn.innerText = `${cnn.confidence}%`;
+    if (progCnn) progCnn.style.width = `${cnn.confidence}%`;
+    if (timeCnn) timeCnn.innerText = `${cnn.inference_time_ms} ms`;
+    if (probCnn) probCnn.innerText = `p = ${cnn.raw_probability}`;
+
+    if (badgeCnn) {
+      if (cnn.status === "genuine") {
+        badgeCnn.innerHTML = `<span class="badge-status badge-genuine"><i class="fa-solid fa-circle-check"></i> Genuine Asset</span>`;
+      } else {
+        badgeCnn.innerHTML = `<span class="badge-status badge-fraud"><i class="fa-solid fa-triangle-exclamation"></i> Fraud Flagged</span>`;
+      }
+    }
+  } else {
+    if (predCnn) predCnn.innerText = "Unavailable";
+    if (confCnn) confCnn.innerText = "N/A";
+    if (badgeCnn) badgeCnn.innerHTML = `<span class="badge bg-secondary">Model Missing</span>`;
+  }
+
+  // 3. EfficientNet-B0 Card
+  const eff = data.efficientnet || {};
+  const predEff = document.getElementById("cmp-pred-eff");
+  const confEff = document.getElementById("cmp-conf-eff");
+  const progEff = document.getElementById("cmp-progress-eff");
+  const timeEff = document.getElementById("cmp-time-eff");
+  const probEff = document.getElementById("cmp-prob-eff");
+  const badgeEff = document.getElementById("cmp-status-badge-eff");
+
+  if (eff.available) {
+    if (predEff) predEff.innerText = eff.prediction;
+    if (confEff) confEff.innerText = `${eff.confidence}%`;
+    if (progEff) progEff.style.width = `${eff.confidence}%`;
+    if (timeEff) timeEff.innerText = `${eff.inference_time_ms} ms`;
+    if (probEff) probEff.innerText = `p = ${eff.raw_probability}`;
+
+    if (badgeEff) {
+      if (eff.status === "genuine") {
+        badgeEff.innerHTML = `<span class="badge-status badge-genuine"><i class="fa-solid fa-circle-check"></i> Genuine Asset</span>`;
+      } else {
+        badgeEff.innerHTML = `<span class="badge-status badge-fraud"><i class="fa-solid fa-triangle-exclamation"></i> Fraud Flagged</span>`;
+      }
+    }
+  } else {
+    if (predEff) predEff.innerText = "Unavailable";
+    if (confEff) confEff.innerText = "N/A";
+    if (badgeEff) badgeEff.innerHTML = `<span class="badge bg-secondary">Model Missing</span>`;
+  }
+
+  // 4. Comparison Table Breakdown
+  const tblTimeCnn = document.getElementById("table-time-cnn");
+  const tblTimeEff = document.getElementById("table-time-eff");
+  const tblProbCnn = document.getElementById("table-prob-cnn");
+  const tblProbEff = document.getElementById("table-prob-eff");
+  const tblConfCnn = document.getElementById("table-conf-cnn");
+  const tblConfEff = document.getElementById("table-conf-eff");
+  const tblPredCnn = document.getElementById("table-pred-cnn");
+  const tblPredEff = document.getElementById("table-pred-eff");
+  const tblConsensus = document.getElementById("table-consensus");
+
+  if (tblTimeCnn) tblTimeCnn.innerText = cnn.available ? `${cnn.inference_time_ms} ms` : "N/A";
+  if (tblTimeEff) tblTimeEff.innerText = eff.available ? `${eff.inference_time_ms} ms` : "N/A";
+  if (tblProbCnn) tblProbCnn.innerText = cnn.available ? `${cnn.raw_probability}` : "N/A";
+  if (tblProbEff) tblProbEff.innerText = eff.available ? `${eff.raw_probability}` : "N/A";
+  if (tblConfCnn) tblConfCnn.innerText = cnn.available ? `${cnn.confidence}%` : "N/A";
+  if (tblConfEff) tblConfEff.innerText = eff.available ? `${eff.confidence}%` : "N/A";
+  if (tblPredCnn) tblPredCnn.innerText = cnn.available ? cnn.prediction : "N/A";
+  if (tblPredEff) tblPredEff.innerText = eff.available ? eff.prediction : "N/A";
+
+  if (tblConsensus) {
+    if (data.agreement) {
+      tblConsensus.innerHTML = `<span class="text-success"><i class="fa-solid fa-circle-check me-1"></i> Full Consensus (${cnn.prediction})</span>`;
+    } else {
+      tblConsensus.innerHTML = `<span class="text-warning"><i class="fa-solid fa-triangle-exclamation me-1"></i> Disagreement (${cnn.prediction} vs ${eff.prediction})</span>`;
+    }
+  }
+
+  wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 // ==================== VERIFICATION & PREDICTION ENGINES ====================
 
-function runVerification(moduleKey) {
+const FLASK_BASE = "http://localhost:5000";
+
+async function runVerification(moduleKey) {
   const container = document.getElementById(`preview-container-${moduleKey}`);
   const verifyBtn = document.getElementById(`btn-verify-${moduleKey}`);
-  
-  if (!container || !verifyBtn) return;
-  
-  // Add class for scanline animation
+  const inputEl = document.getElementById(`input-${moduleKey}`);
+
+  if (!container || !verifyBtn || !inputEl) return;
+
+  const file = inputEl.files[0];
+  if (!file) {
+    alert("Please select an image file first.");
+    return;
+  }
+
+  // Show loading indicator
   container.classList.add("scanning");
   verifyBtn.setAttribute("disabled", "true");
-  
-  // Determine processing time based on selected Model
-  const processTime = activeModel === "cnn" ? 1400 : 2200;
-  
-  setTimeout(() => {
+  verifyBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Analyzing Image...';
+
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("model", activeModel);
+
+    const resp = await fetch(`${FLASK_BASE}/predict/${moduleKey}`, {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await resp.json();
+
+    if (!resp.ok || !result.success) {
+      throw new Error(result.error || "Failed to process image");
+    }
+
     container.classList.remove("scanning");
-    
-    // Perform Dynamic Prediction Outputs
-    generatePredictionResult(moduleKey);
-    
-    // Enable verify btn again
+
+    // Display Real Model Results in UI
+    displayResultsCard(moduleKey, result.prediction, result.confidence, result.status);
+    logVerification(moduleKey, file.name, result.prediction, result.confidence, result.status);
+
+  } catch (err) {
+    container.classList.remove("scanning");
+    console.error("[FinGuard API Error]:", err.message);
+    alert(`Verification Error: ${err.message}`);
+  } finally {
     verifyBtn.removeAttribute("disabled");
-  }, processTime);
+    verifyBtn.innerHTML = '<i class="fa-solid fa-shield-halved me-2"></i>Verify Authenticity';
+  }
 }
+
+
 
 function runSignatureVerification() {
   const scanPanel = document.getElementById("scanning-sig-panel");

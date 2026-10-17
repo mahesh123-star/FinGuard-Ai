@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large files exceeding GitHub 100MB limit
+*.zip
+FinGuard_QR.zip
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Environments
+env/
+venv/
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
