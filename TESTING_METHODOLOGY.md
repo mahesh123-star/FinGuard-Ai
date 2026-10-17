@@ -12,6 +12,9 @@
 | :--- | :--- |
 | **Project** | **FinGuard AI** — Multi-Domain Financial Instrument & Document Authentication Platform |
 | **Deliverable** | Testing and Test Design Methodology Document |
+| **Academic Course** | 23CSE473 – Neural Networks & Deep Learning (NNDL) |
+| **Team** | Team 25 (Group 25) |
+| **Authors** | **P. Maheswar Raju** (`CB.SC.U4CSE23063`) & **Siddu Sidharatha Reddy** (`CB.SC.U4CSE23066`) |
 | **Models Under Test** | 1. Custom CNN with CBAM (Channel & Spatial Attention) and DnCNN Denoiser<br>2. Transfer-Learned EfficientNet-B0 Backbone (Fine-Tuned Classifier Head) |
 | **Target Domains** | Counterfeit Currency Detection, Financial Document Tampering, QR Transaction Security |
 | **Test Suite Size** | 114 tests, 114 passed, 0 failed |

@@ -181,7 +181,7 @@ def build_ablation_pdf(filename):
 
     # ==================== PAGE 1 ====================
     story.append(Paragraph("Ablation Study: Deep Learning Optimization for Financial Security & Document Authentication", title_style))
-    story.append(Paragraph("FinGuard AI Research Team (Team-4)", team_style))
+    story.append(Paragraph("FinGuard AI Research Team (Team 25 / Group 25)", team_style))
     story.append(Paragraph("Department of Computer Science and Engineering &nbsp;|&nbsp; Course: 23CSE473 – Neural Networks and Deep Learning", dept_style))
     story.append(Paragraph("<b>P. Maheswar Raju</b> (CB.SC.U4CSE23063) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Siddu Sidharatha Reddy</b> (CB.SC.U4CSE23066)", author_style))
     story.append(Paragraph("✦", diamond_style))

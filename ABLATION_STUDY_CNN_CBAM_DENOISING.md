@@ -1,7 +1,7 @@
 # Ablation Study: Deep Learning Optimization for Financial Security & Document Authentication
 
 ## Empirical Evaluation of Custom CNN, CBAM Attention, and DnCNN Denoising Architectures
-**FinGuard AI Research Team (Team-4)**  
+**FinGuard AI Research Team (Team 25 / Group 25)**  
 **Department of Computer Science and Engineering**  
 **Course: 23CSE473 – Neural Networks and Deep Learning**  
 

@@ -158,6 +158,7 @@ def build_pdf(filename):
         [Paragraph("Field", th_style), Paragraph("Detail", th_style)],
         [Paragraph("Project", th_style), Paragraph("FinGuard AI — Multi-Domain Financial Security & Authentication Platform", td_style)],
         [Paragraph("Deliverable", th_style), Paragraph("Testing and Test Design Methodology", td_style)],
+        [Paragraph("Course & Team", th_style), Paragraph("23CSE473 – Neural Networks & Deep Learning (NNDL) &nbsp;|&nbsp; <b>Team 25 (Group 25)</b>", td_style)],
         [Paragraph("Models under test", th_style), Paragraph("Custom CNN (CBAM Attention + DnCNN Denoiser) and Transfer-Learned EfficientNet-B0 (Currency, Document, QR)", td_style)],
         [Paragraph("Test suite size", th_style), Paragraph("114 tests, 114 passed, 0 failed", td_style)],
         [Paragraph("Execution time", th_style), Paragraph("142 seconds (dual-model CPU evaluation)", td_style)],

@@ -369,7 +369,7 @@ This repository includes a comprehensive, publication-grade academic research su
 * **Siddu Sidharatha Reddy** — Roll No: `CB.SC.U4CSE23066`
 
 * **Course:** 23CSE473 – Neural Networks & Deep Learning (NNDL)
-* **Team:** Group 4 (Team-4)
+* **Team:** Team 25 (Group 25)
 * **Department:** Department of Computer Science and Engineering
 * **Institution:** Amrita Vishwa Vidyapeetham
 

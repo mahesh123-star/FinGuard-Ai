@@ -6,7 +6,7 @@
 | **PROJECT** | **FinGuard AI** — Multi-Domain Financial Security & Document Authentication Platform |
 | **DELIVERABLE** | Module 2: GAN Results (Baseline & Comparative Evaluation) |
 | **ACADEMIC COURSE** | 23CSE473 – Neural Networks & Deep Learning (NNDL) |
-| **TEAM NO** | Group 4 (Team-4) |
+| **TEAM NO** | Team 25 (Group 25) |
 | **TEAM MEMBERS** | **P. Maheswar Raju** (`CB.SC.U4CSE23063`) & **Siddu Sidharatha Reddy** (`CB.SC.U4CSE23066`) |
 | **DEPARTMENT** | Department of Computer Science and Engineering |
 | **EVALUATION COHORT** | Multi-Domain Specimen Corpus (1,240 Images: 868 Train, 186 Val, 186 Held-Out Test across Currency, Documents, and QR Codes) |
