@@ -3,7 +3,7 @@
 ### Project Links:
 
 - **a. URL of online server where application is hosted:**  
-  [https://finguard-ai.vercel.app/](https://finguard-ai.vercel.app/) *(Pending Cloud Deployment / Accessible locally via `http://localhost:5000`)*
+  [https://fin-guard-hvwy6k9x0-mahesh123-stars-projects.vercel.app/](https://fin-guard-hvwy6k9x0-mahesh123-stars-projects.vercel.app/)
 
 - **b. GitHub URL:**  
   [https://github.com/mahesh123-star/FinGuard-Ai](https://github.com/mahesh123-star/FinGuard-Ai)
