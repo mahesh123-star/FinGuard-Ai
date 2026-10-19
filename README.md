@@ -9,7 +9,7 @@
   [https://github.com/mahesh123-star/FinGuard-Ai](https://github.com/mahesh123-star/FinGuard-Ai)
 
 - **c. IEEE DataPort URL where the dataset is published:**  
-  [https://ieee-dataport.org/documents/finguard-financial-fraud-detection-dataset](https://ieee-dataport.org/documents/finguard-financial-fraud-detection-dataset)
+  [https://ieee-dataport.org/documents/financial](https://ieee-dataport.org/documents/financial)
 
 ---
 
