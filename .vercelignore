@@ -1,0 +1,13 @@
+# Ignore Python backend from Vercel Serverless Function build
+requirements.txt
+app.py
+*.keras
+*.ipynb
+*.pdf
+generate_*.py
+Fraudulent/
+Authentic/
+FinGuard_QR/
+FinGuard_QR.zip
+__pycache__/
+.ipynb_checkpoints/

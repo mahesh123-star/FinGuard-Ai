@@ -1,3 +1,23 @@
+# FinGuard AI - Project Links & Submission Details
+
+### Project Links:
+
+- **a. URL of online server where application is hosted:**  
+  [https://finguard-ai.vercel.app/](https://finguard-ai.vercel.app/) *(Pending Cloud Deployment / Accessible locally via `http://localhost:5000`)*
+
+- **b. GitHub URL:**  
+  [https://github.com/mahesh123-star/FinGuard-Ai](https://github.com/mahesh123-star/FinGuard-Ai)
+
+- **c. IEEE DataPort URL where the dataset is published:**  
+  [https://ieee-dataport.org/documents/finguard-financial-fraud-detection-dataset](https://ieee-dataport.org/documents/finguard-financial-fraud-detection-dataset)
+
+---
+
+### Project Overview:
+**FinGuard AI** is an intelligent, multi-domain financial security and document authentication platform engineered for real-time deployment at point-of-sale (POS) terminals and automated banking endpoints. The system unifies deep learning innovations—combining an input **Residual Denoising CNN (DnCNN)** frontend to filter scanner grain and print dither, **Convolutional Block Attention Modules (CBAM)** for localized tamper and watermark feature extraction, and a **Three-State Hysteresis Decision Guard** to virtually eliminate False Acceptance Rates (FAR down to 2.90%). Covering three vital attack vectors—Counterfeit Currency, Tampered Financial Invoices/Checks, and Fraudulent QR Payment Hijacks—FinGuard AI achieves **96.84% accuracy** with an ultra-light **4.8 MB** footprint and **18.4 ms** edge CPU inference latency.
+
+---
+
 # FinGuard AI: Intelligent Financial Security & Document Authentication Platform
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
@@ -179,7 +199,7 @@ Follow these instructions to set up and run FinGuard AI on your local machine.
 ### Prerequisites
 * **Python 3.9, 3.10, or 3.11** installed.
 * **Git** installed.
-* A standard web browser (Chrome, Edge, Firefox, or Safari).
+* A modern web browser (Chrome, Edge, Firefox, or Safari).
 
 ---
 
